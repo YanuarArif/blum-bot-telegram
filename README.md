@@ -23,21 +23,21 @@ Blum Airdrop Bot automates interactions with the Blum airdrop platform. It inclu
 
 1. **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/dante4rt/blum-airdrop-bot.git
-    ```
+   ```bash
+   git clone https://github.com/dante4rt/blum-airdrop-bot.git
+   ```
 
 2. **Navigate to the project directory:**
 
-    ```bash
-    cd blum-airdrop-bot
-    ```
+   ```bash
+   cd blum-airdrop-bot
+   ```
 
 3. **Install dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ### Configuration
 
@@ -45,11 +45,12 @@ Blum Airdrop Bot automates interactions with the Blum airdrop platform. It inclu
 
 2. **Add your `QUERY_ID` to the `.env` file**. Example format:
 
-    ```env
-    QUERY_ID=YOUR_QUERY_ID_VALUE_HERE
-    ```
+   ```env
+   QUERY_ID=YOUR_QUERY_ID_VALUE_HERE
+   ```
 
    - To find your `QUERY_ID`, follow these steps:
+
      1. Open [Web Telegram](https://web.telegram.org) in your browser.
      2. Open the [Blum Bot](https://t.me/BlumCryptoBot/app?startapp=ref_vTHusRz4j0).
      3. Open DevTools (right-click on the page and select "Inspect" or press `F12`).
@@ -65,14 +66,6 @@ To start the bot, run:
 ```bash
 npm start
 ```
-
-## Donations
-
-If you would like to support the development of this project, you can make a donation using the following addresses:
-
-- **Solana**: `GLQMG8j23ookY8Af1uLUg4CQzuQYhXcx56rkpZkyiJvP`
-- **EVM**: `0x960EDa0D16f4D70df60629117ad6e5F1E13B8F44`
-- **BTC**: `bc1p9za9ctgwwvc7amdng8gvrjpwhnhnwaxzj3nfv07szqwrsrudfh6qvvxrj8`
 
 ## License
 
