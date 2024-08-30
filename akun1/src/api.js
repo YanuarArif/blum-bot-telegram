@@ -1,12 +1,11 @@
-const axios = require('axios');
+const axios = require("axios");
 
 async function getToken() {
   const { data } = await axios({
-    url: 'https://gateway.blum.codes/v1/auth/provider/PROVIDER_TELEGRAM_MINI_APP',
-    method: 'POST',
+    url: "https://gateway.blum.codes/v1/auth/provider/PROVIDER_TELEGRAM_MINI_APP",
+    method: "POST",
     data: {
-      query: process.env.QUERY_ID,
-      referralToken: 'vTHusRz4j0', // changeable
+      query: process.env.QUERY_ID_1,
     },
   });
 
@@ -15,8 +14,8 @@ async function getToken() {
 
 async function getUsername(token) {
   const response = await axios({
-    url: 'https://gateway.blum.codes/v1/user/me',
-    method: 'GET',
+    url: "https://gateway.blum.codes/v1/user/me",
+    method: "GET",
     headers: { Authorization: token },
   });
   return response.data.username;
@@ -24,8 +23,8 @@ async function getUsername(token) {
 
 async function getBalance(token) {
   const response = await axios({
-    url: 'https://game-domain.blum.codes/api/v1/user/balance',
-    method: 'GET',
+    url: "https://game-domain.blum.codes/api/v1/user/balance",
+    method: "GET",
     headers: { Authorization: token },
   });
   return response.data;
@@ -34,13 +33,13 @@ async function getBalance(token) {
 async function getTribe(token) {
   try {
     const response = await axios({
-      url: 'https://game-domain.blum.codes/api/v1/tribe/my',
-      method: 'GET',
+      url: "https://game-domain.blum.codes/api/v1/tribe/my",
+      method: "GET",
       headers: { Authorization: token },
     });
     return response.data;
   } catch (error) {
-    if (error.response.data.message === 'NOT_FOUND') {
+    if (error.response.data.message === "NOT_FOUND") {
       return;
     } else {
       console.log(error.response.data.message);
@@ -51,8 +50,8 @@ async function getTribe(token) {
 async function claimFarmReward(token) {
   try {
     const { data } = await axios({
-      url: 'https://game-domain.blum.codes/api/v1/farming/claim',
-      method: 'POST',
+      url: "https://game-domain.blum.codes/api/v1/farming/claim",
+      method: "POST",
       headers: { Authorization: token },
       data: null,
     });
@@ -69,8 +68,8 @@ async function claimFarmReward(token) {
 async function claimDailyReward(token) {
   try {
     const { data } = await axios({
-      url: 'https://game-domain.blum.codes/api/v1/daily-reward?offset=-420',
-      method: 'POST',
+      url: "https://game-domain.blum.codes/api/v1/daily-reward?offset=-420",
+      method: "POST",
       headers: {
         Authorization: token,
       },
@@ -79,7 +78,7 @@ async function claimDailyReward(token) {
 
     return data;
   } catch (error) {
-    if (error.response.data.message === 'same day') {
+    if (error.response.data.message === "same day") {
       console.error(
         `🚨 Daily claim failed because you already claim this day.`.red
       );
@@ -91,8 +90,8 @@ async function claimDailyReward(token) {
 
 async function startFarmingSession(token) {
   const { data } = await axios({
-    url: 'https://game-domain.blum.codes/api/v1/farming/start',
-    method: 'POST',
+    url: "https://game-domain.blum.codes/api/v1/farming/start",
+    method: "POST",
     headers: { Authorization: token },
     data: null,
   });
@@ -101,8 +100,8 @@ async function startFarmingSession(token) {
 
 async function getTasks(token) {
   const { data } = await axios({
-    url: 'https://game-domain.blum.codes/api/v1/tasks',
-    method: 'GET',
+    url: "https://game-domain.blum.codes/api/v1/tasks",
+    method: "GET",
     headers: { Authorization: token },
   });
   return data;
@@ -112,7 +111,7 @@ async function startTask(token, taskId, title) {
   try {
     const { data } = await axios({
       url: `https://game-domain.blum.codes/api/v1/tasks/${taskId}/start`,
-      method: 'POST',
+      method: "POST",
       headers: { Authorization: token },
       data: null,
     });
@@ -121,7 +120,7 @@ async function startTask(token, taskId, title) {
     if (
       error.response &&
       error.response.data &&
-      error.response.data.message === 'Task type does not support start'
+      error.response.data.message === "Task type does not support start"
     ) {
       console.error(
         `🚨 Start task "${title}" failed, because the task is not started yet.`
@@ -136,7 +135,7 @@ async function startTask(token, taskId, title) {
 async function claimTaskReward(token, taskId) {
   const { data } = await axios({
     url: `https://game-domain.blum.codes/api/v1/tasks/${taskId}/claim`,
-    method: 'POST',
+    method: "POST",
     headers: { Authorization: token },
     data: null,
   });
@@ -145,8 +144,8 @@ async function claimTaskReward(token, taskId) {
 
 async function getGameId(token) {
   const { data } = await axios({
-    url: 'https://game-domain.blum.codes/api/v1/game/play',
-    method: 'POST',
+    url: "https://game-domain.blum.codes/api/v1/game/play",
+    method: "POST",
     headers: { Authorization: token },
     data: null,
   });
@@ -156,7 +155,7 @@ async function getGameId(token) {
 async function claimGamePoints(token, gameId, points) {
   const { data } = await axios({
     url: `https://game-domain.blum.codes/api/v1/game/claim`,
-    method: 'POST',
+    method: "POST",
     headers: { Authorization: token },
     data: {
       gameId,
